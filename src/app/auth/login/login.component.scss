@@ -1,0 +1,50 @@
+$shocklogic-font: 'Montserrat', sans-serif;
+$shocklogic-orange: #FF6E0B;
+$shocklogic-dark: #222327;
+$shocklogic-light: whitesmoke;
+$shocklogic-blue: #5454C9;
+
+.login-bg{
+    background-image: url(http://thefutures.herokuapp.com/images/shocklogic/loginBackground.png);
+    background-size: 75%;
+}
+
+.sign-in-title{
+    color: $shocklogic-dark;
+    font-family: $shocklogic-font;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+.sign-in-subtitle{
+    color: rgb(77, 77, 77);
+    font-family: $shocklogic-font;
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.width-login-btn{
+    margin-top: 20px;
+    width: 250px;
+    height: 45PX;
+    background-color: $shocklogic-orange;
+    color: $shocklogic-light;
+    text-align: -webkit-center;
+}
+
+.btn-login-text{
+    font-size: 14px;
+    letter-spacing: 0.1rem;
+    font-weight: 700;
+}
+
+:host ::ng-deep .mat-form-field-wrapper{
+    padding-bottom: 0;
+}
+
+.trans{
+    color: transparent;
+}
