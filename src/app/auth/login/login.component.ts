@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   goToSystems(){
-    this.router.navigate(['/pages/systems']);
+    this.router.navigate(['/shocklogic/systems']);
   }
 
   checkingInputEmail(){

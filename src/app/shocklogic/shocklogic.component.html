@@ -1,0 +1,32 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="width-100 header">
+        <mat-toolbar fxFill fxLayoutAlign="none center">
+           <a class="navbar-logo" href="#">
+               <img height="50" src="https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_d32b5f14bfc4a5b30dbc37826da69e8d/shocklogic.png" alt="">
+           </a>
+           <div class="text-white pl-2 navbar-title">
+                Systems 
+                <br>
+                <span class="fw-800">Dashboard</span>
+           </div>
+           <span class="spacer"></span>
+           <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxShow="true" fxHide.gt-xs>
+                <mat-icon>menu</mat-icon>
+            </button>
+           <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxHide="true" fxShow.gt-xs>
+                <mat-icon>account_circle</mat-icon>
+                Hello, 
+               <span class="fw-800">FirstName LastName</span>
+               <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+                <button class="fs-inherit" mat-menu-item>My account</button>
+                <button class="fs-inherit" mat-menu-item (click)="signOut()">Log out</button>
+            </mat-menu>
+        </mat-toolbar>
+        <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="content width-100 text-center slide-in-fwd-center">
+        <router-outlet></router-outlet>
+    </div>
+<div>
