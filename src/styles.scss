@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-$shocklogic-font: 'Montserrat', sans-serif;
+$shocklogic-font: 'Nunito Sans', sans-serif;
 $shocklogic-orange: #FD814C;
 $shocklogic-dark: #222327;
 $shocklogic-light: whitesmoke;
@@ -9,8 +9,8 @@ $shocklogic-blue: #5454C9;
 body {
     height: 100%;
     box-sizing: border-box;
-    background-color: $shocklogic-light;
-    color: $shocklogic-dark;
+    background-color: #FFF;
+    color: #000;
     font-family: $shocklogic-font;
     margin: 0px;
 }
@@ -31,6 +31,8 @@ mat-form-field.mat-form-field {
     width: 250px;
     color: $shocklogic-dark;
 }
+
+mat-card{ font-family: $shocklogic-font !important;}
 
 .mat-snack-bar-container{ background-color: white; color: $shocklogic-dark; }
 
@@ -64,6 +66,7 @@ ngx-bottom-nav-button:not(.active) { --ngx-bottom-nav-button-color: whitesmoke; 
 .mt-40{ margin-top: 40px !important; }
 .mb-20{ margin-bottom: 20px !important; }
 .mb-40{ margin-bottom: 40px !important; }
+.my-4 { margin-top: 1.5rem !important; margin-bottom: 1.5rem !important;}
 
 :host ::ng-deep td.mat-cell { padding-left: 0px; }
 
