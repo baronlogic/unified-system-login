@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>UnifiedSystemLogin</title>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,9 +13,10 @@
 <body>
   <app-root></app-root>
   <script>
-    document.documentElement.addEventListener('touchmove', function (event) {
-      event.preventDefault();
-    }, false);
+      document.addEventListener('touchmove',
+        function(e) {
+          e.preventDefault();
+        }, {passive:false});
   </script>
 </body>
 </html>
