@@ -1,25 +1,42 @@
-<div fxFill class="slide-in-fwd-center" fxLayout="column" fxLayoutAlign="center center" >
-    <span class="sign-in-title text-center"><strong class="bold">LOGIN</strong></span>
-    <form [formGroup]="signInForm" (ngSubmit)="handleSignIn()" fxLayout="column" fxLayoutAlign="center center">
-      <mat-form-field appearance="outline">
-        <mat-label>Username or Email <span class="trans">.</span></mat-label>
-        <input matInput formControlName="Email" class="form-control">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="Password" class="form-control">
-        <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
-          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
-      <mat-form-field class="slide-in-fwd-center" appearance="outline" *ngIf="checkingInputEmail()">
-        <mat-label> Client ID </mat-label>
-        <input matInput formControlName="Client_Id" class="form-control">
-      </mat-form-field>
-      <button class="width-login-btn" mat-raised-button [disabled]="!signInForm.valid || bSignIn || (checkingInputEmail() && checkInputClientId())">
-        <span *ngIf="!bSignIn" class="btn-login-text">LOGIN</span>
-        <mat-spinner *ngIf="bSignIn" mode="indeterminate" [diameter]="30"></mat-spinner>
-      </button>
-    </form>
+<div fxFill class="slide-in-fwd-center login-bg" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card fxLayout="row" fxLayoutAlign="center center">
+      <div class="login-container">
+        <div class="text-center logo-container">
+          <img height="75" src="https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_d32b5f14bfc4a5b30dbc37826da69e8d/shocklogic.png" alt="">
+        </div>
+        <div class="title-container">
+          <h1 class="sign-in-title text-center">LOGIN</h1>
+          <div class="linear-gradient-border mt-3"></div>
+        </div>
+        <form [formGroup]="signInForm" (ngSubmit)="handleSignIn()" fxLayout="column" fxLayoutAlign="center center">
+          <mat-form-field appearance="outline">
+            <mat-label>Username or Email <span class="trans">.</span></mat-label>
+            <input matInput formControlName="Email" class="form-control">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="Password" class="form-control">
+            <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-form-field class="slide-in-fwd-center" appearance="outline" *ngIf="checkingInputEmail()">
+            <mat-label> Client ID </mat-label>
+            <input matInput formControlName="Client_Id" class="form-control">
+          </mat-form-field>
+          <button class="width-login-btn" mat-raised-button [disabled]="!signInForm.valid || bSignIn || (checkingInputEmail() && checkInputClientId())">
+            <span *ngIf="!bSignIn" class="btn-login-text">LOGIN</span>
+            <mat-spinner *ngIf="bSignIn" mode="indeterminate" [diameter]="30"></mat-spinner>
+          </button>
+        </form>
+        <div class="links-container text-center" fxLayout="column" fxLayoutAlign="center center">
+          <a class="sl-link" href="#">Forgot your password?</a>
+          <a class="sl-link" href="#">Request system demo</a>
+        </div>
+      </div>
+      <div class="video-container" fxLayoutAlign="center center" fxHide="true" fxShow.gt-sm>
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/rflhJOdmSKw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </mat-card>
 </div>
   
