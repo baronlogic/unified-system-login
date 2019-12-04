@@ -24,7 +24,7 @@
             <mat-label> Client ID </mat-label>
             <input matInput formControlName="Client_Id" class="form-control">
           </mat-form-field>
-          <button class="width-login-btn" mat-raised-button [disabled]="!signInForm.valid || bSignIn || (checkingInputEmail() && checkInputClientId())">
+          <button class="width-login-btn" mat-raised-button [disabled]="!signInForm.valid || bSignIn || (checkingInputEmail() && checkInputClientId())" fxLayoutAlign="center center">
             <span *ngIf="!bSignIn" class="btn-login-text">LOGIN</span>
             <mat-spinner *ngIf="bSignIn" mode="indeterminate" [diameter]="30"></mat-spinner>
           </button>

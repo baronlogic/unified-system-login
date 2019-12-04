@@ -6,7 +6,7 @@ $shocklogic-light: whitesmoke;
 $shocklogic-blue: #5454C9;
 
 .login-bg{
-    background-image: url(http://thefutures.herokuapp.com/images/shocklogic/loginBackground.png);
+    background-image: url(src\assets\loginBackground.png);
     background-position-x: right;
     background-position-y: top;
     background-repeat: no-repeat;
@@ -87,5 +87,7 @@ mat-card{
 
 .video-container{
     width: 40rem;
+    min-height: 445.933px;
+    max-height: 504.183px;
     height: 100%;
 }
