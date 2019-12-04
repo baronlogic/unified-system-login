@@ -8,17 +8,25 @@ import { Router } from '@angular/router';
 })
 export class ShocklogicComponent implements OnInit {
 
+  user: any;
+
   constructor(
     private router: Router
   ) 
   { }
 
   ngOnInit() {
+    if(!localStorage.getItem('userLogged')){
+      this.signOut();
+      return;
+    }
+    this.user = JSON.parse(localStorage.getItem('userLogged'));
+    console.log(this.user);
   }
 
   signOut(){
     localStorage.clear();
-    this.router.navigate(['']);
+    this.router.navigate([''], { replaceUrl: true });
   }
 
 }

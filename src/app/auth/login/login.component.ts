@@ -36,12 +36,6 @@ export class LoginComponent implements OnInit {
     });
     if(localStorage.getItem('userLogged')){
       this.user = JSON.parse(localStorage.getItem('userLogged'));
-      if(this.user.id && this.user.clientId && !this.user.projectId){
-        //this.goToProjectSelection();
-      }
-      else if(this.user.id && this.user.clientId && this.user.projectId){
-        //this.goToSelectSetup();
-      }
     }
   }
 
@@ -52,7 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   goToSystems(){
-    this.router.navigate(['/shocklogic/systems']);
+    this.router.navigate(['/shocklogic/systems'], { replaceUrl: true });
   }
 
   checkingInputEmail(){
@@ -98,8 +92,11 @@ export class LoginComponent implements OnInit {
           }
           else if(this.auxRes.type == 'success'){
             let auxUser = {
-              id: this.auxRes.id,
+              userId: this.auxRes.id,
               clientId: this.auxRes.client_id,
+              firstName: this.auxRes.first_name,
+              familyName: this.auxRes.family_name,
+              systems: this.auxRes.systems
             }
             localStorage.setItem('userLogged', JSON.stringify(auxUser));
             this.openSnackBar('Login successful!');
@@ -129,8 +126,11 @@ export class LoginComponent implements OnInit {
           }
           else if(this.auxRes.type == 'success'){
             let auxUser = {
-              id: this.auxRes.id,
+              userId: this.auxRes.id,
               clientId: this.auxRes.client_id,
+              firstName: this.auxRes.first_name,
+              familyName: this.auxRes.family_name,
+              systems: this.auxRes.systems
             }
             localStorage.setItem('userLogged', JSON.stringify(auxUser));
             this.openSnackBar('Login successful!');
