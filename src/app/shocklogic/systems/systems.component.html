@@ -1,1 +1,31 @@
-<p>systems works!</p>
+<div fxLayout="row wrap" fxLayoutAlign="center">
+  <h1 class="systems-title">MY SYSTEMS</h1>
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="center">
+    <ng-container *ngFor="let system of systems">
+      <mat-card *ngIf="system.status == 1" class="systems-card" fxLayout="column" fxLayoutAlign="center center">
+        <div class="login-container">
+          <div>
+            <span class="card-title">{{system.newName}}</span>
+          </div>
+          <div>
+              <img width="200" src="http://thefutures.herokuapp.com/images/shocklogic/device.png" alt="">
+          </div>
+        </div>
+        <div class="width-100" fxLayoutAlign="center center">
+          <button class="systems-card-btn" mat-raised-button>LAUNCH</button>
+        </div>
+      </mat-card>
+    </ng-container>
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="center">
+  <h1 class="systems-title">DISCOVER</h1>
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="center">
+  <ng-container *ngFor="let system of systems">
+    <mat-card (click)="discover(system)" *ngIf="system.status == 0" class="litle-card" fxLayout="row" fxLayoutAlign="center center">
+      <img width="66" src="http://thefutures.herokuapp.com/images/shocklogic/device.png" alt="">
+      <span class="litle-title">{{system.newName}}</span>
+    </mat-card>
+  </ng-container>
+</div>
