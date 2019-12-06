@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     });
     if(localStorage.getItem('userLogged')){
       this.user = JSON.parse(localStorage.getItem('userLogged'));
+      this.goToSystems();
     }
   }
 
