@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-systems',
@@ -12,7 +13,8 @@ export class SystemsComponent implements OnInit {
   systems: any;
 
   constructor(
-    private router: Router
+    private router: Router,
+    public snackBar: MatSnackBar
   ) 
   { }
 
@@ -30,30 +32,47 @@ export class SystemsComponent implements OnInit {
     this.router.navigate([''], { replaceUrl: true });
   }
 
+  openSnackBar(message: string){
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+    });
+  }
+
+  goToProjects(){
+    this.router.navigate(['/shocklogic/projects']);
+  }
+
   getSystems(){
+    //LICENSE: is to handle if the user has a paid license or not from the system.
+      //We handle it with the value with the name of the system. 
+    //The user can still login but we will show a message that he is without a license to contact Shocklogic support
+    //ACTIVE: we use it to show or not the system. 
+      //It is with this value that we are going to deactivate the system. 
+    //We handle this value with the System Status.
     this.systems = [
-      { oldName: 'Abstractlogic', newName: 'Abstractlogic', status: this.user.systems.AbstractLogic },
-      { oldName: 'Exhibitorlogic', newName: 'Exhibition', status: this.user.systems.Exhibitorlogic },
-      { oldName: 'LeadlogicMobile', newName: 'LeadlogicMobile', status: this.user.systems.LeadlogicMobile },
-      //{ oldName: 'LeadlogicMobileStatus', newName: 'LeadlogicMobileStatus', status: this.user.systems.LeadlogicMobileStatus },
-      { oldName: 'Memberlogic', newName: 'Membership', status: this.user.systems.Memberlogic },
-      { oldName: 'Mobilelogic', newName: 'Mobilelogic', status: this.user.systems.Mobilelogic },
-      //{ oldName: 'MobilelogicStatus', newName: 'MobilelogicStatus', status: this.user.systems.MobilelogicStatus },
-      { oldName: 'Onsitelogic', newName: 'Onsitelogic', status: this.user.systems.Onsitelogic },
-      //{ oldName: 'OnsitelogicStatus', newName: 'OnsitelogicStatus', status: this.user.systems.OnsitelogicStatus },
-      //{ oldName: 'Participantlogic', newName: 'Participantlogic', status: this.user.systems.Participantlogic },
-      { oldName: 'ParticipantlogicWeb', newName: 'ParticipantlogicWeb', status: this.user.systems.ParticipantlogicWeb },
-      { oldName: 'Roomlogic', newName: 'Roomlogic', status: this.user.systems.Roomlogic },
-      //{ oldName: 'RoomlogicStatus', newName: 'RoomlogicStatus', status: this.user.systems.RoomlogicStatus },
-      { oldName: 'Scanlogic', newName: 'Scanning', status: this.user.systems.Scanlogic },
-      //{ oldName: 'ScanlogicStatus', newName: 'ScanningStatus', status: this.user.systems.ScanlogicStatus },
-      { oldName: 'Surveylogic', newName: 'Surveylogic', status: this.user.systems.Surveylogic },
-      //{ oldName: 'SurveylogicStatus', newName: 'SurveylogicStatus', status: this.user.systems.SurveylogicStatus }
+      { name: 'Abstractlogic', license: this.user.systems.AbstractLogic, active: this.user.systems.AbstractLogicStatus },
+      { name: 'Exhibitorlogic', license: this.user.systems.Exhibitorlogic, active: this.user.systems.ExhibitorlogicStatus },
+      { name: 'Leadlogic', license: this.user.systems.LeadlogicMobile, active: this.user.systems.LeadlogicMobileStatus },
+      { name: 'Memberlogic', license: this.user.systems.Memberlogic, active: this.user.systems.MemberlogicStatus },
+      { name: 'Mobilelogic', license: this.user.systems.Mobilelogic, active: this.user.systems.MobilelogicStatus },
+      { name: 'Onsitelogic', license: this.user.systems.Onsitelogic, active: this.user.systems.OnsitelogicStatus },
+      { name: 'Participantlogic', license: this.user.systems.ParticipantlogicWeb, active: this.user.systems.ParticipantlogicWebStatus },
+      { name: 'Roomlogic', license: this.user.systems.Roomlogic, active: this.user.systems.RoomlogicStatus },
+      { name: 'Scanlogic', license: this.user.systems.Scanlogic, active: this.user.systems.ScanlogicStatus },
+      { name: 'Surveylogic', license: this.user.systems.Surveylogic, active: this.user.systems.SurveylogicStatus },
     ]
   }
 
-  discover($event){
-    console.log($event);
+  launch(system){
+    if(system.license == 0){
+      this.openSnackBar('You do not have an active license for this system, please contact Shocklogic support');
+    }
+    localStorage.setItem('system', JSON.stringify(system));
+    this.goToProjects();
+  }
+
+  discover(system){
+    console.log(system);
   }
 
 }
