@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-systems',
@@ -14,7 +15,8 @@ export class SystemsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private usersService: UsersService
   ) 
   { }
 
@@ -67,8 +69,6 @@ export class SystemsComponent implements OnInit {
     if(system.license == 0){
       this.openSnackBar('You do not have an active license for this system, please contact Shocklogic support');
     }
-    localStorage.setItem('system', JSON.stringify(system));
-    this.goToProjects();
   }
 
   discover(system){
