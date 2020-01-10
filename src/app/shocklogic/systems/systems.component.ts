@@ -42,6 +42,7 @@ export class SystemsComponent implements OnInit {
 
   goToProjects(systemUrl){
     //this.router.navigate(['/shocklogic/projects']);
+    //window.location.href = 'https://dev.shocklogic.com/v2/projectList';
     window.location.href = systemUrl;
   }
 
@@ -53,13 +54,13 @@ export class SystemsComponent implements OnInit {
       //It is with this value that we are going to deactivate the system. 
     //We handle this value with the System Status.
     this.systems = [
-      { name: 'Abstractlogic', icon: 'assets/abstractlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
+      { name: 'Abstractlogic', icon: 'assets/abstractlogic.png', url: 'https://www5.shocklogic.com/scripts/JMCommon/JMLoginAbsDemo.asp',
         license: this.user.systems.AbstractLogic, active: this.user.systems.AbstractlogicStatus },
       /*{ name: 'Exhibitorlogic', icon: 'assets/exhibitorlogic.png',
       license: this.user.systems.Exhibitorlogic, active: this.user.systems.ExhibitorlogicStatus },*/
       /*{ name: 'Leadlogic', icon: 'assets/leadlogic.png',
       license: this.user.systems.LeadlogicMobile, active: this.user.systems.LeadlogicMobileStatus },*/
-      { name: 'Memberlogic', icon: 'assets/memberlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
+      { name: 'Memberlogic', icon: 'assets/memberlogic.png', url: 'https://www5.shocklogic.com/scripts/JMCommon/JMLoginMember.asp',
       license: this.user.systems.Memberlogic, active: this.user.systems.MemberlogicStatus },
       /*{ name: 'Mobilelogic', icon: 'assets/mobilelogic.png',
       license: this.user.systems.Mobilelogic, active: this.user.systems.MobilelogicStatus },*/
@@ -67,7 +68,7 @@ export class SystemsComponent implements OnInit {
       license: this.user.systems.Onsitelogic, active: this.user.systems.OnsitelogicStatus },*/
       { name: 'Official API', icon: 'assets/API.png', url: 'https://api.shocklogic.com/',
       license: this.user.systems.API, active: this.user.systems.APIStatus },
-      { name: 'Participantlogic', icon: 'assets/participantlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
+      { name: 'Participantlogic', icon: 'assets/participantlogic.png', url: 'https://www5.shocklogic.com/scripts/JMCommon/JMLoginEvtdemo.asp',
       license: this.user.systems.ParticipantlogicWeb, active: this.user.systems.ParticipantlogicWebStatus },
       /*{ name: 'Roomlogic', icon: 'assets/roomlogic.png',
       license: this.user.systems.Roomlogic, active: this.user.systems.RoomlogicStatus },*/
