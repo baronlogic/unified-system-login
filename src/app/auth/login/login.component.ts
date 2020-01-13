@@ -97,9 +97,11 @@ export class LoginComponent implements OnInit {
               clientId: this.auxRes.client_id,
               firstName: this.auxRes.first_name,
               familyName: this.auxRes.family_name,
-              systems: this.auxRes.systems
+              systems: this.auxRes.systems,
+              securityLevel: this.auxRes.security_level
             }
             localStorage.setItem('userLogged', JSON.stringify(auxUser));
+            localStorage.setItem('token', JSON.stringify(this.signInForm.get('Password').value));
             this.openSnackBar('Login successful!');
             this.goToSystems();
           }
@@ -131,9 +133,11 @@ export class LoginComponent implements OnInit {
               clientId: this.auxRes.client_id,
               firstName: this.auxRes.first_name,
               familyName: this.auxRes.family_name,
-              systems: this.auxRes.systems
+              systems: this.auxRes.systems,
+              securityLevel: this.auxRes.security_level
             }
             localStorage.setItem('userLogged', JSON.stringify(auxUser));
+            localStorage.setItem('token', JSON.stringify(this.signInForm.get('Password').value));
             this.openSnackBar('Login successful!');
             this.goToSystems();
           }
