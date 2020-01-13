@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UsersService } from 'src/app/core/services/users.service';
+import { SessionService } from 'src/app/core/services/session.service';
 
 @Component({
   selector: 'app-systems',
@@ -12,11 +12,12 @@ export class SystemsComponent implements OnInit {
 
   user: any;
   systems: any;
+  token: string;
 
   constructor(
     private router: Router,
     public snackBar: MatSnackBar,
-    private usersService: UsersService
+    private sessionService: SessionService
   ) 
   { }
 
@@ -26,6 +27,10 @@ export class SystemsComponent implements OnInit {
       return;
     }
     this.user = JSON.parse(localStorage.getItem('userLogged'));
+    if(localStorage.getItem('token')){
+      this.token = JSON.parse(localStorage.getItem('token'));
+      //localStorage.removeItem('token');
+    }
     this.getSystems();
   }
 
@@ -54,13 +59,13 @@ export class SystemsComponent implements OnInit {
       //It is with this value that we are going to deactivate the system. 
     //We handle this value with the System Status.
     this.systems = [
-      { name: 'Abstractlogic', icon: 'assets/abstractlogic.png', url: 'https://www5.shocklogic.com/scripts/JMCommon/JMLoginAbsDemo.asp',
+      { name: 'Abstractlogic', icon: 'assets/abstractlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
         license: this.user.systems.AbstractLogic, active: this.user.systems.AbstractlogicStatus },
       /*{ name: 'Exhibitorlogic', icon: 'assets/exhibitorlogic.png',
       license: this.user.systems.Exhibitorlogic, active: this.user.systems.ExhibitorlogicStatus },*/
       /*{ name: 'Leadlogic', icon: 'assets/leadlogic.png',
       license: this.user.systems.LeadlogicMobile, active: this.user.systems.LeadlogicMobileStatus },*/
-      { name: 'Memberlogic', icon: 'assets/memberlogic.png', url: 'https://www5.shocklogic.com/scripts/JMCommon/JMLoginMember.asp',
+      { name: 'Memberlogic', icon: 'assets/memberlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
       license: this.user.systems.Memberlogic, active: this.user.systems.MemberlogicStatus },
       /*{ name: 'Mobilelogic', icon: 'assets/mobilelogic.png',
       license: this.user.systems.Mobilelogic, active: this.user.systems.MobilelogicStatus },*/
@@ -68,7 +73,7 @@ export class SystemsComponent implements OnInit {
       license: this.user.systems.Onsitelogic, active: this.user.systems.OnsitelogicStatus },*/
       { name: 'Official API', icon: 'assets/API.png', url: 'https://api.shocklogic.com/',
       license: this.user.systems.API, active: this.user.systems.APIStatus },
-      { name: 'Participantlogic', icon: 'assets/participantlogic.png', url: 'https://www5.shocklogic.com/scripts/JMCommon/JMLoginEvtdemo.asp',
+      { name: 'Participantlogic', icon: 'assets/participantlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
       license: this.user.systems.ParticipantlogicWeb, active: this.user.systems.ParticipantlogicWebStatus },
       /*{ name: 'Roomlogic', icon: 'assets/roomlogic.png',
       license: this.user.systems.Roomlogic, active: this.user.systems.RoomlogicStatus },*/
@@ -79,11 +84,41 @@ export class SystemsComponent implements OnInit {
     ]
   }
 
+  shareSessionASP(session){
+    this.sessionService.shareSessionWithASP(session)
+    .subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  shareSessionLaravel(session){
+    this.sessionService.shareSesionWithLaravel(session)
+    .subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
   launch(system){
     if(system.license == 0){
       this.openSnackBar('You do not have an active license for this system, please contact Shocklogic support');
     }
-    this.goToProjects(system.url);
+    let formData = new FormData();
+    formData.append('Client_Id', this.user.clientId);
+    formData.append('User_Id', this.user.userId);
+    formData.append('Token', this.token);
+    formData.append('Security_Level', this.user.securityLevel);
+    formData.append('System', system.name);
+    this.shareSessionASP(formData);
   }
 
   discover(system){
