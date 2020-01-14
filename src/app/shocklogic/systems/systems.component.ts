@@ -98,7 +98,20 @@ export class SystemsComponent implements OnInit {
   }
 
   shareSessionLaravel(session, systemUrl){
-    this.sessionService.shareSesionWithLaravel(session)
+    this.sessionService.shareSessionWithLaravel(session)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.goToProjects(systemUrl);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  shareAllSession(session, systemUrl){
+    this.sessionService.shareMultipleSession(session)
     .subscribe(
       res => {
         console.log(res);
@@ -117,10 +130,12 @@ export class SystemsComponent implements OnInit {
     let formData = new FormData();
     formData.append('Client_Id', this.user.clientId);
     formData.append('User_Id', this.user.userId);
+    formData.append('First_Name', this.user.firstName);
+    formData.append('Family_Name', this.user.familyName);
     formData.append('Token', this.token);
     formData.append('Security_Level', this.user.securityLevel);
     formData.append('System', system.name);
-    this.shareSessionASP(formData, system.url);
+    this.shareAllSession(formData, system.url);
   }
 
   discover(system){
