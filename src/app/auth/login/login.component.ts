@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.user = JSON.parse(localStorage.getItem('userLogged'));
       this.goToSystems();
     }
-    console.log(this.location._platformLocation.location);
+    //console.log(this.location._platformLocation.location);
   }
 
   openSnackBar(message: string){
