@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
 
   user: any;
 
@@ -24,7 +23,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public location: Location,
     public snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private usersService: UsersService
@@ -40,7 +38,6 @@ export class LoginComponent implements OnInit {
       this.user = JSON.parse(localStorage.getItem('userLogged'));
       this.goToSystems();
     }
-    console.log(this.location._platformLocation.location);
   }
 
   openSnackBar(message: string){
