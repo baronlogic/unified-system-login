@@ -12,12 +12,12 @@ export class SessionService extends ApiService {
   }
 
   shareSessionWithLaravel(session: any){
-    return this.http.post('https://dev.shocklogic.com/v2/projectList', session, this.httpOptions);
+    return this.http.post('https://dev.shocklogic.com/v2/createSession', session, this.httpOptions);
   }
 
   shareMultipleSession(session: any){
     let responseASP = this.http.post('https://dev.shocklogic.com/scripts/JMEvent/create_session.asp', session, this.httpOptions);
-    let responseLaravel = this.http.post('https://dev.shocklogic.com/v2/projectList', session, this.httpOptions);
+    let responseLaravel = this.http.post('https://dev.shocklogic.com/v2/createSession', session, this.httpOptions);
     return forkJoin([responseASP, responseLaravel]);
   }
 
