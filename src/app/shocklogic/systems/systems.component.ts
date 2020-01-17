@@ -135,7 +135,7 @@ export class SystemsComponent implements OnInit {
     formData.append('Token', this.token);
     formData.append('Security_Level', this.user.securityLevel);
     formData.append('System', system.name);
-    this.shareAllSession(formData, system.url);
+    this.shareSessionLaravel(formData, system.url);
   }
 
   discover(system){
