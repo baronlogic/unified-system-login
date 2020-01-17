@@ -12,7 +12,6 @@ export class ApiService {
   httpOptions = {
     headers: new HttpHeaders({
     'Token-App': '7875d82ca05f8ba818011eb04a890c20cb44c52e',
-    'Content-Type': 'application/x-www-form-urlencoded',
     })
   }
 
