@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { HttpHeaders } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 
 @Injectable({
@@ -21,6 +20,10 @@ export class SessionService extends ApiService {
     let responseASP = this.http.post('https://dev.shocklogic.com/scripts/JMEvent/create_session.asp', session, this.httpOptions);
     let responseLaravel = this.http.post('https://dev.shocklogic.com/v2/createSession', session, this.httpOptions);
     return forkJoin([responseASP, responseLaravel]);
+  }
+
+  forgotPassword(user: any){
+    return this.http.post('https://dev.shocklogic.com/v2/forgotPassword', user, this.httpOptions);
   }
 
 }
