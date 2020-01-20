@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UsersService } from 'src/app/core/services/users.service';
+import { SessionService } from 'src/app/core/services/session.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -15,24 +15,24 @@ export class ForgotPasswordComponent implements OnInit {
 
   auxRes: any;
 
-  signInForm: FormGroup;
+  forgotPasswordForm: FormGroup;
 
   hidePassword = true;
 
-  bSignIn = false;
+  bForgotPassword = false;
 
   constructor(
     private router: Router,
     public snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
-    private usersService: UsersService
+    private sessionService: SessionService
   ) { }
 
   ngOnInit() {
-    this.signInForm = this.formBuilder.group({
+    this.forgotPasswordForm = this.formBuilder.group({
       Email: ['', Validators.required],
-      Password: ['', Validators.required],
-      Client_Id: ['']
+      User_Id: ['', Validators.required],
+      Client_Id: ['', Validators.required]
     });
     if(localStorage.getItem('userLogged')){
       this.user = JSON.parse(localStorage.getItem('userLogged'));
@@ -51,106 +51,38 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   checkingInputEmail(){
-    if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm.test(this.signInForm.get('Email').value)){
-      return true;
-    }
-    else{
-      this.signInForm.controls['Client_Id'].setValue('');
+    if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm.test(this.forgotPasswordForm.get('Email').value)){
       return false;
     }
-  }
-
-  checkInputClientId(){
-    if(this.signInForm.value.Client_Id == ''){
-      return true;
-    }
     else{
-      return false;
+      //this.forgotPasswordForm.controls['Client_Id'].setValue('');
+      return true;
     }
   }
 
   handleSignIn(){
-    this.bSignIn = true;
+    this.bForgotPassword = true;
 
     let formData = new FormData();
-    formData.append('email', this.signInForm.get('Email').value);
-    formData.append('password', this.signInForm.get('Password').value);
+    formData.append('Email', this.forgotPasswordForm.get('Email').value);
+    formData.append('User_Id', this.forgotPasswordForm.get('User_Id').value);
+    formData.append('Client_Id', this.forgotPasswordForm.get('Client_Id').value);
 
-    console.log(this.signInForm.value);
+    console.log(this.forgotPasswordForm.value);
 
-    //If we log in with an email
-    if(this.checkingInputEmail()){
-
-      this.usersService.validateUserCredentials(this.signInForm.get('Client_Id').value, formData)
-      .subscribe(
-        res => {
-          this.bSignIn = false;
-          console.log(res);
-          this.auxRes = res;
-          if(this.auxRes.type == 'error'){
-            this.openSnackBar(this.auxRes.message);
-            return;
-          }
-          else if(this.auxRes.type == 'success'){
-            let auxUser = {
-              userId: this.auxRes.id,
-              clientId: this.auxRes.client_id,
-              firstName: this.auxRes.first_name,
-              familyName: this.auxRes.family_name,
-              systems: this.auxRes.systems,
-              securityLevel: this.auxRes.security_level
-            }
-            localStorage.setItem('userLogged', JSON.stringify(auxUser));
-            localStorage.setItem('token', JSON.stringify(this.signInForm.get('Password').value));
-            this.openSnackBar('Login successful!');
-            this.goToSystems();
-          }
-        },
-        err => {
-          this.bSignIn = false;
-          console.log(err);
-          this.openSnackBar(err.message);
-        }
-      );
-    }
-
-    //If we log in with an username
-    else{
-
-      this.usersService.validateUserWithoutClientId(formData)
-      .subscribe(
-        res => {
-          this.bSignIn = false;
-          console.log(res);
-          this.auxRes = res;
-          if(this.auxRes.type == 'error'){
-            this.openSnackBar(this.auxRes.message);
-            return;
-          }
-          else if(this.auxRes.type == 'success'){
-            let auxUser = {
-              userId: this.auxRes.id,
-              clientId: this.auxRes.client_id,
-              firstName: this.auxRes.first_name,
-              familyName: this.auxRes.family_name,
-              systems: this.auxRes.systems,
-              securityLevel: this.auxRes.security_level
-            }
-            localStorage.setItem('userLogged', JSON.stringify(auxUser));
-            localStorage.setItem('token', JSON.stringify(this.signInForm.get('Password').value));
-            this.openSnackBar('Login successful!');
-            this.goToSystems();
-          }
-        },
-        err => {
-          this.bSignIn = false;
-          console.log(err);
-          this.openSnackBar(err.message);
-        }
-      );
-
-    }
-
+    this.sessionService.forgotPassword(formData)
+    .subscribe(
+      res => {
+        this.bForgotPassword = false;
+        console.log(res);
+        //this.openSnackBar('Login successful!');
+        //this.goToSystems();
+      },
+      err => {
+        this.bForgotPassword = false;
+        console.log(err);
+      }
+    );
   }
 
 }
