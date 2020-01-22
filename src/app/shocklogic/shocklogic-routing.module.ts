@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ShocklogicComponent } from './shocklogic.component';
 import { SystemsComponent } from './systems/systems.component';
-import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
   { 
@@ -10,8 +9,7 @@ const routes: Routes = [
     component: ShocklogicComponent,
     children: [
       { path: '', redirectTo: 'systems', pathMatch: 'full' },
-      { path: "systems", component: SystemsComponent },
-      //{ path: "projects", component: ProjectsComponent }
+      { path: "systems", component: SystemsComponent }
     ]
   }
 ];
