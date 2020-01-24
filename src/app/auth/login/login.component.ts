@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     private usersService: UsersService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(){
     this.signInForm = this.formBuilder.group({
       Email: ['', Validators.required],
       Password: ['', Validators.required],
@@ -104,7 +104,7 @@ export class LoginComponent implements OnInit {
               securityLevel: this.auxRes.security_level
             }
             localStorage.setItem('userLogged', JSON.stringify(auxUser));
-            localStorage.setItem('token', JSON.stringify(this.signInForm.get('Password').value));
+            localStorage.setItem('token', JSON.stringify(this.auxRes.token));
             this.openSnackBar('Login successful!');
             this.goToSystems();
           }
@@ -140,7 +140,7 @@ export class LoginComponent implements OnInit {
               securityLevel: this.auxRes.security_level
             }
             localStorage.setItem('userLogged', JSON.stringify(auxUser));
-            localStorage.setItem('token', JSON.stringify(this.signInForm.get('Password').value));
+            localStorage.setItem('token', JSON.stringify(this.auxRes.token));
             this.openSnackBar('Login successful!');
             this.goToSystems();
           }
