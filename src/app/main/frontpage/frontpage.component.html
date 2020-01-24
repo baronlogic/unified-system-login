@@ -1,0 +1,155 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="width-100 header">
+        <mat-toolbar fxFill fxLayoutAlign="none center">
+           <a class="navbar-logo" href="#">
+               <img height="50" src="https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_d32b5f14bfc4a5b30dbc37826da69e8d/shocklogic.png" alt="">
+           </a>
+           <div class="text-white pl-2 navbar-title">
+                <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxHide="true" fxShow.gt-xs>
+                    HOME
+                </button>
+                <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxHide="true" fxShow.gt-xs>
+                    ABOUT
+                </button>
+                <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxHide="true" fxShow.gt-xs>
+                    WORK
+                </button>
+                <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxHide="true" fxShow.gt-xs>
+                    ARTICLES
+                </button>
+                <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxHide="true" fxShow.gt-xs>
+                    SERVICES
+                </button>
+           </div>
+           <span class="spacer"></span>
+           <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxShow="true" fxHide.gt-xs>
+                <mat-icon>menu</mat-icon>
+            </button>
+           <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxHide="true" fxShow.gt-xs>
+                CONTACT US
+            </button>
+            <button class="navbar-btn" mat-button routerLink="/auth/login" fxHide="true" fxShow.gt-xs>
+                USER LOG IN
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+                <button class="fs-inherit" mat-menu-item>OPTION 1</button>
+                <button class="fs-inherit" mat-menu-item>OPTION 2</button>
+            </mat-menu>
+        </mat-toolbar>
+        <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="content width-100 text-center slide-in-fwd-center">
+        <div fxFill class="main-bg" fxLayout="column" fxLayoutAlign="center center">
+            <img height="200" src="https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_d32b5f14bfc4a5b30dbc37826da69e8d/shocklogic.png" alt="">
+            <h2>POWERFUL TECHNOLOGY SOLUTIONS AND SOFTWARE <br> FOR MANAGING EVENTS, MEETINGS AND MEMBERS</h2>
+            <button class="orange-btn" mat-button>
+               REQUEST DEMO
+            </button>
+        </div>
+        <div class="second-bg" fxLayout="column" fxLayoutAlign="center center">
+            <h2>OUR PRODUCTS</h2>
+            <div fxLayout="row wrap" fxLayoutAlign="center">
+                <mat-card class="systems-card" fxLayout="column" fxLayoutAlign="center center">
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="center center">
+                        <div>
+                            <span class="card-title">Membership</span>
+                        </div>
+                      <div class="my-4">
+                          <img height="75" src="assets/memberlogic.png" alt="">
+                      </div>
+                    </div>
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="end center">
+                        <span class="card-info">CRM/DATABASE<br>MEMBER PORTAL | RENEWALS</span>
+                        <button class="systems-card-btn mt-20" mat-raised-button>MORE</button>
+                    </div>
+                </mat-card>
+                <mat-card class="systems-card" fxLayout="column" fxLayoutAlign="center center">
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="center center">
+                        <div>
+                            <span class="card-title">Registration & Badging</span>
+                        </div>
+                      <div class="my-4">
+                          <img height="75" src="assets/participantlogic.png" alt="">
+                      </div>
+                    </div>
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="end center">
+                        <span class="card-info">ONSITE CHECK-IN<br>SELF SERVICE PLATFORM<br>ONLINE PAYMENTS | EVENT WEBSITES<br>SURVEYS | QR/BARCODED BADGES</span>
+                        <button class="systems-card-btn mt-20" mat-raised-button>MORE</button>
+                    </div>
+                </mat-card>
+                <mat-card class="systems-card" fxLayout="column" fxLayoutAlign="center center">
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="center center">
+                        <div>
+                            <span class="card-title">Programme/Agenda</span>
+                        </div>
+                      <div class="my-4">
+                          <img height="75" src="assets/abstractlogic.png" alt="">
+                      </div>
+                    </div>
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="end center">
+                        <span class="card-info">ABSTRACTS/PAPERS | SPEAKERS ePOSTERS/iPOSTERS | AWARDS<br>SESSIONS</span>
+                        <button class="systems-card-btn mt-20" mat-raised-button>MORE</button>
+                    </div>
+                </mat-card>
+                <mat-card class="systems-card" fxLayout="column" fxLayoutAlign="center center">
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="center center">
+                        <div>
+                            <span class="card-title">Scanning</span>
+                        </div>
+                      <div class="my-4">
+                          <img height="75" src="assets/scanlogic.png" alt="">
+                      </div>
+                    </div>
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="end center">
+                        <span class="card-info">REAL-TIME ACCESS CONTROL<br>GUESTLIST | CME/CPD<br>ATTENDEE TRACKING</span>
+                        <button class="systems-card-btn mt-20" mat-raised-button>MORE</button>
+                    </div>
+                </mat-card>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="center">
+                <mat-card class="systems-card" fxLayout="column" fxLayoutAlign="center center">
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="center center">
+                        <div>
+                            <span class="card-title">Exhibition</span>
+                        </div>
+                      <div class="my-4">
+                          <img height="75" src="assets/exhibitorlogic.png" alt="">
+                      </div>
+                    </div>
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="end center">
+                        <span class="card-info">EXHIBITOR PORTAL<br>ePOSTERS/iPOSTERS<br>INTERACTIVE FLOOR PLAN<br>STAND SALES | DOWNLOADABLE FORMS</span>
+                        <button class="systems-card-btn mt-20" mat-raised-button>MORE</button>
+                    </div>
+                </mat-card>
+                <mat-card class="systems-card" fxLayout="column" fxLayoutAlign="center center">
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="center center">
+                        <div>
+                            <span class="card-title">Mobile App</span>
+                        </div>
+                      <div class="my-4">
+                          <img height="75" src="https://trello-attachments.s3.amazonaws.com/52a5f9b71cfc79160f005fc5/592ff71e29751b4155369846/073715bdf1554054a356d386c6f48946/Icon_MobileApp.png" alt="">
+                      </div>
+                    </div>
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="end center">
+                        <span class="card-info">PROGRAMME/AGENDA | NETWORKING<br>INTERACTIVE FLOOR PLAN<br>GAMIFICATION | AUDIENCE ENGAGEMENT</span>
+                        <button class="systems-card-btn mt-20" mat-raised-button>MORE</button>
+                    </div>
+                </mat-card>
+                <mat-card class="systems-card" fxLayout="column" fxLayoutAlign="center center">
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="center center">
+                        <div>
+                            <span class="card-title">Digital Marketing</span>
+                        </div>
+                      <div class="my-4">
+                          <img height="75" src="https://trello-attachments.s3.amazonaws.com/52a5f9b71cfc79160f005fc5/592ff71e29751b4155369846/62cd1df2f68986b90359cce1ad14234b/Icon_DigitalMarketing.png" alt="">
+                      </div>
+                    </div>
+                    <div class="width-100 height-100" fxLayout="column" fxLayoutAlign="end center">
+                        <span class="card-info">WEBSITE & SEO | SOCIAL MEDIA<br>VIDEO | E-SHOTS</span>
+                        <button class="systems-card-btn mt-20" mat-raised-button>MORE</button>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+<div>
