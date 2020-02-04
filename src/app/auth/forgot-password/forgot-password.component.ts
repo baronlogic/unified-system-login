@@ -34,10 +34,6 @@ export class ForgotPasswordComponent implements OnInit {
       User_Id: ['', Validators.required],
       Client_Id: ['', Validators.required]
     });
-    if(localStorage.getItem('userLogged')){
-      this.user = JSON.parse(localStorage.getItem('userLogged'));
-      this.goToSystems();
-    }
   }
 
   openSnackBar(message: string){
