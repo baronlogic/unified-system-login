@@ -16,12 +16,7 @@ export class ShocklogicComponent implements OnInit {
   { }
 
   ngOnInit() {
-    if(!localStorage.getItem('userLogged')){
-      this.signOut();
-      return;
-    }
     this.user = JSON.parse(localStorage.getItem('userLogged'));
-    console.log(this.user);
   }
 
   signOut(){

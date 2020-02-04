@@ -22,10 +22,6 @@ export class SystemsComponent implements OnInit {
   { }
 
   ngOnInit() {
-    if(!localStorage.getItem('userLogged')){
-      this.signOut();
-      return;
-    }
     this.user = JSON.parse(localStorage.getItem('userLogged'));
     if(localStorage.getItem('token')){
       this.token = JSON.parse(localStorage.getItem('token'));
