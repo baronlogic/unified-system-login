@@ -36,11 +36,6 @@ export class LoginComponent implements OnInit {
       Password: ['', Validators.required],
       Client_Id: ['']
     });
-    if(localStorage.getItem('userLogged')){
-      this.user = JSON.parse(localStorage.getItem('userLogged'));
-      this.goToSystems();
-    }
-    //console.log(this.location._platformLocation.location);
   }
 
   openSnackBar(message: string){
