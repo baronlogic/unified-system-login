@@ -9,7 +9,7 @@ body {
     box-sizing: border-box;
     background-color: #FFF;
     color: #000;
-    font-family: $shocklogic-font;
+    font-family: $shocklogic-font !important;
     margin: 0px;
 }
   
@@ -24,7 +24,7 @@ html { height: 100%; box-sizing: border-box; margin: 0; }
 
 mat-form-field.mat-form-field {
     font-size: 14px;
-    font-family: $shocklogic-font;
+    font-family: $shocklogic-font !important;
     width: 250px;
     color: #000;
 }
@@ -33,7 +33,7 @@ mat-card{ font-family: $shocklogic-font !important;}
 
 .mat-snack-bar-container{ background-color: #FFF; color: #000; }
 
-.mat-simple-snackbar, .mat-button-wrapper{ font-family: $shocklogic-font; font-size: smaller; }
+.mat-simple-snackbar, .mat-button-wrapper{ font-family: $shocklogic-font !important; font-size: smaller; }
 
 mat-toolbar{ 
     background-color: $shocklogic-primary !important; 
