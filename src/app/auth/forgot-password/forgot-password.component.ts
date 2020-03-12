@@ -70,13 +70,11 @@ export class ForgotPasswordComponent implements OnInit {
     .subscribe(
       res => {
         this.bForgotPassword = false;
-        console.log(res);
-        //this.openSnackBar('Login successful!');
-        //this.goToSystems();
+        this.openSnackBar(JSON.stringify(res));
       },
       err => {
         this.bForgotPassword = false;
-        console.log(err);
+        this.openSnackBar(JSON.stringify(err));
       }
     );
   }

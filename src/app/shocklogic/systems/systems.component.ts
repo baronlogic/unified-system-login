@@ -55,27 +55,27 @@ export class SystemsComponent implements OnInit {
       //It is with this value that we are going to deactivate the system. 
     //We handle this value with the System Status.
     this.systems = [
-      { name: 'Abstractlogic', icon: 'http://dev.shocklogic.com/v2/img/unified-login/abstractlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
+      { name: 'Abstractlogic', icon: 'https://dev.shocklogic.com/v2/img/unified-login/abstractlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
         license: this.user.systems.AbstractLogic, active: this.user.systems.AbstractlogicStatus },
       /*{ name: 'Exhibitorlogic', icon: 'assets/exhibitorlogic.png',
       license: this.user.systems.Exhibitorlogic, active: this.user.systems.ExhibitorlogicStatus },*/
       /*{ name: 'Leadlogic', icon: 'assets/leadlogic.png',
       license: this.user.systems.LeadlogicMobile, active: this.user.systems.LeadlogicMobileStatus },*/
-      { name: 'Memberlogic', icon: 'http://dev.shocklogic.com/v2/img/unified-login/memberlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
+      { name: 'Memberlogic', icon: 'https://dev.shocklogic.com/v2/img/unified-login/memberlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
       license: this.user.systems.Memberlogic, active: this.user.systems.MemberlogicStatus },
       /*{ name: 'Mobilelogic', icon: 'assets/mobilelogic.png',
       license: this.user.systems.Mobilelogic, active: this.user.systems.MobilelogicStatus },*/
       /*{ name: 'Onsitelogic', icon: 'assets/onsitelogic.png',
       license: this.user.systems.Onsitelogic, active: this.user.systems.OnsitelogicStatus },*/
-      { name: 'Official API', icon: 'http://dev.shocklogic.com/v2/img/unified-login/API.png', url: 'https://api.shocklogic.com/',
+      { name: 'Official API', icon: 'https://dev.shocklogic.com/v2/img/unified-login/API.png', url: 'https://api.shocklogic.com/',
       license: this.user.systems.API, active: this.user.systems.APIStatus },
-      { name: 'Participantlogic', icon: 'http://dev.shocklogic.com/v2/img/unified-login/participantlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
+      { name: 'Participantlogic', icon: 'https://dev.shocklogic.com/v2/img/unified-login/participantlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
       license: this.user.systems.ParticipantlogicWeb, active: this.user.systems.ParticipantlogicWebStatus },
       /*{ name: 'Roomlogic', icon: 'assets/roomlogic.png',
       license: this.user.systems.Roomlogic, active: this.user.systems.RoomlogicStatus },*/
-      { name: 'Scanlogic', icon: 'http://dev.shocklogic.com/v2/img/unified-login/scanlogic.png', url: 'https://www.mobapplogic.com/devapp/scanlogicmobile-web-group/',
+      { name: 'Scanlogic', icon: 'https://dev.shocklogic.com/v2/img/unified-login/scanlogic.png', url: 'https://www.mobapplogic.com/devapp/scanlogicmobile-web-group/',
       license: this.user.systems.Scanlogic, active: this.user.systems.ScanlogicStatus },
-      { name: 'Surveylogic', icon: 'http://dev.shocklogic.com/v2/img/unified-login/surveylogic.png', url: 'https://www5.shocklogic.com/scripts/surveylogic/',
+      { name: 'Surveylogic', icon: 'https://dev.shocklogic.com/v2/img/unified-login/surveylogic.png', url: 'https://www5.shocklogic.com/scripts/surveylogic/',
       license: this.user.systems.Surveylogic, active: this.user.systems.SurveylogicStatus },
     ]
   }
