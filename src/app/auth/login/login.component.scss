@@ -6,7 +6,7 @@ $shocklogic-light: whitesmoke;
 $shocklogic-blue: #5454C9;
 
 .login-bg{
-    background-image: url(http://dev.shocklogic.com/v2/img/unified-login/loginBackground.png);
+    background-image: url(https://dev.shocklogic.com/v2/img/unified-login/loginBackground.png);
     background-position-x: right;
     background-position-y: top;
     background-repeat: no-repeat;
@@ -39,7 +39,7 @@ mat-card{
 }
 .sign-in-subtitle{
     color: rgb(77, 77, 77);
-    font-family: $shocklogic-font;
+    font-family: $shocklogic-font !important;
     font-size: 14px;
     margin-bottom: 20px;
     margin-left: 20px;
