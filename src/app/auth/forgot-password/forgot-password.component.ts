@@ -69,12 +69,14 @@ export class ForgotPasswordComponent implements OnInit {
     this.sessionService.forgotPassword(formData)
     .subscribe(
       res => {
+        let auxRes: any = res;
         this.bForgotPassword = false;
-        this.openSnackBar(JSON.stringify(res));
+        this.openSnackBar(auxRes.text);
       },
       err => {
+        let auxErr: any = err;
         this.bForgotPassword = false;
-        this.openSnackBar(JSON.stringify(err));
+        this.openSnackBar(auxErr.text);
       }
     );
   }
