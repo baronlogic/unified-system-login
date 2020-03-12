@@ -71,12 +71,14 @@ export class ForgotPasswordComponent implements OnInit {
       res => {
         let auxRes: any = res;
         this.bForgotPassword = false;
-        this.openSnackBar(auxRes.text);
+        console.log(auxRes);
+        this.openSnackBar(auxRes.result);
       },
       err => {
         let auxErr: any = err;
         this.bForgotPassword = false;
-        this.openSnackBar(auxErr.text);
+        console.log(auxErr);
+        this.openSnackBar('Something went wrong!SS');
       }
     );
   }
