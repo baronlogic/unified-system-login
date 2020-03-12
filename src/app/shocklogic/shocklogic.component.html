@@ -15,8 +15,8 @@
             </button>
            <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxHide="true" fxShow.gt-xs>
                 <mat-icon>account_circle</mat-icon>
-                Hello, 
-               <span class="fw-800">{{this.user.firstName}} {{this.user.familyName}}</span>
+                <span> Hello, </span> 
+               <span class="fw-800">{{this.user.firstName}} {{this.user.familyName}} </span>
                <mat-icon>arrow_drop_down</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
