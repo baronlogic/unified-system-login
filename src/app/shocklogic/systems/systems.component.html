@@ -5,11 +5,11 @@
     <ng-container *ngFor="let system of systems">
       <mat-card *ngIf="system.active == 1" class="systems-card" fxLayout="column" fxLayoutAlign="center center">
         <div class="login-container">
-          <div>
-            <span class="card-title">{{system.name}}</span>
+          <div class="cursor-pointer">
+            <span (click)="launch(system)" class="card-title">{{system.name}}</span>
           </div>
           <div class="my-4">
-              <img height="125" src="{{system.icon}}" alt="">
+              <img class="cursor-pointer" (click)="launch(system)" height="125" src="{{system.icon}}" alt="">
           </div>
         </div>
         <div class="width-100" fxLayoutAlign="center center">
