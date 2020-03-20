@@ -12,15 +12,11 @@ import { UsersService } from 'src/app/core/services/users.service';
 })
 export class LoginComponent implements OnInit {
 
-  user: any;
-
   auxRes: any;
-
   signInForm: FormGroup;
-
   hidePassword = true;
-
   bSignIn = false;
+  bCookies = true;
 
   constructor(
     private router: Router,
@@ -149,6 +145,10 @@ export class LoginComponent implements OnInit {
 
     }
 
+  }
+
+  acceptCookies(){
+    this.bCookies = false;
   }
 
 }

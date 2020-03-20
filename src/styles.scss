@@ -54,6 +54,7 @@ mat-toolbar{
 .width-75{ width: 75%; }
 
 .height-100{ height: 100%; }
+.height-fit{ height: fit-content !important; }
 
 .spacer { flex: 1 1 auto; }
 
@@ -67,7 +68,9 @@ ngx-bottom-nav-button:not(.active) { --ngx-bottom-nav-button-color: whitesmoke; 
 .text-center{ text-align: center; }
 .text-left{ text-align: left; }
 
+.ml-20{ margin-left: 20px !important; }
 .ml--15{ margin-left: -15px !important; }
+.mr-20{ margin-right:20px !important; }
 .mr--15{ margin-right: -15px !important; }
 .mx-20{ margin-left: 20px; margin-right: 20px;}
 .mt-20{ margin-top: 20px !important; }
