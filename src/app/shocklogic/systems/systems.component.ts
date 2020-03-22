@@ -84,7 +84,7 @@ export class SystemsComponent implements OnInit {
     this.sessionService.shareSessionWithASP(session)
     .subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.goToProjects(systemUrl);
       },
       err => {
@@ -97,7 +97,7 @@ export class SystemsComponent implements OnInit {
     this.sessionService.shareSessionWithLaravel(session)
     .subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.goToProjects(systemUrl);
       },
       err => {
@@ -110,7 +110,7 @@ export class SystemsComponent implements OnInit {
     this.sessionService.shareMultipleSession(session)
     .subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.goToProjects(systemUrl);
       },
       err => {
@@ -135,7 +135,7 @@ export class SystemsComponent implements OnInit {
   }
 
   discover(system){
-    console.log(system);
+    //console.log(system);
   }
 
 }

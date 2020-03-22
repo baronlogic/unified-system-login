@@ -1,4 +1,5 @@
-<div fxFill class="slide-in-fwd-center login-bg" fxLayout="column" fxLayoutAlign="center center">
+<div fxFill class="login-bg content" fxLayout="column" fxLayoutAlign="center center">
+  <div class="slide-in-fwd-center content" fxLayout="column" fxLayoutAlign="center center">
     <mat-card fxLayout="row" fxLayoutAlign="center center">
       <div class="login-container">
         <div class="text-center logo-container">
@@ -38,5 +39,22 @@
         <iframe width="100%" height="500" src="https://www.youtube.com/embed/rflhJOdmSKw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </mat-card>
+  </div>
+  <div *ngIf="bCookies" class="footer width-100">
+    <mat-toolbar class="height-fit cookie-msg">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <img class="mr-20" fxShow.xs="false" height="75" src="https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_d32b5f14bfc4a5b30dbc37826da69e8d/shocklogic.png" alt="">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <h3>Shocklogic Cookie Policy</h3>
+          We have updated our cookie policy to reflect changes in the law on cookies and tracking technologies used on websites.
+            In order to deliver a personalised, responsive service and to improve the systems, we remember and store information about how you use it.
+            To do this we have placed cookies on your computer and will further continue to use cookies.
+            These cookies are completely safe and secure and will never contain any sensitive information.
+            They are used only by Shocklogic.
+            <button (click)="acceptCookies()" class="cookie-btn" mat-raised-button fxLayoutAlign="center center">CONTINUE</button>
+        </div>
+      </div>
+    </mat-toolbar>
+  </div>
 </div>
   

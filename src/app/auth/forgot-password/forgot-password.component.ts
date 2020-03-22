@@ -13,13 +13,15 @@ export class ForgotPasswordComponent implements OnInit {
 
   user: any;
 
-  auxRes: any;
-
-  forgotPasswordForm: FormGroup;
+  forgotPasswordFirstStepForm: FormGroup;
+  forgotPasswordSecondStepForm: FormGroup;
 
   hidePassword = true;
-
   bForgotPassword = false;
+  bFirstStep = false;
+  bSecondStep = false;
+
+  clients: any;
 
   constructor(
     private router: Router,
@@ -29,11 +31,13 @@ export class ForgotPasswordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.forgotPasswordForm = this.formBuilder.group({
+
+    this.bFirstStep = true;
+
+    this.forgotPasswordFirstStepForm = this.formBuilder.group({
       Email: ['', Validators.required],
-      User_Id: ['', Validators.required],
-      Client_Id: ['', Validators.required]
     });
+
   }
 
   openSnackBar(message: string){
@@ -46,8 +50,8 @@ export class ForgotPasswordComponent implements OnInit {
     this.router.navigate(['/shocklogic/systems'], { replaceUrl: true });
   }
 
-  checkingInputEmail(){
-    if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm.test(this.forgotPasswordForm.get('Email').value)){
+  checkingInputEmail(forgotPasswordForm){
+    if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm.test(forgotPasswordForm.get('Email').value)){
       return false;
     }
     else{
@@ -56,31 +60,68 @@ export class ForgotPasswordComponent implements OnInit {
     }
   }
 
-  handleSignIn(){
+  handleFirstStep(){
     this.bForgotPassword = true;
+    if(this.bFirstStep){
+      let formData = new FormData();
+      formData.append('Email', this.forgotPasswordFirstStepForm.get('Email').value);
+      this.sessionService.forgotPassword(formData)
+      .subscribe(
+        res => {
+          let auxRes: any = res;
+          //console.log(auxRes);
+          if(auxRes.state == 200){
+            this.bForgotPassword = false;
+            this.openSnackBar(auxRes.message);
+            return;
+          }
+          else if(auxRes.state == 201){
+            this.forgotPasswordSecondStepForm = this.formBuilder.group({
+              Email: [{value: this.forgotPasswordFirstStepForm.get('Email').value, disabled: true}, Validators.required],
+              Client_Id: ['', Validators.required]
+            });
+            this.clients = auxRes.clients;
+            this.bFirstStep = false;
+            this.bSecondStep = true;
+            this.bForgotPassword = false;
+          }
+        },
+        err => {
+          let auxErr: any = err;
+          this.bForgotPassword = false;
+          console.log(auxErr);
+          this.openSnackBar(auxErr.message);
+        }
+      );
+    }
+  }
 
-    let formData = new FormData();
-    formData.append('Email', this.forgotPasswordForm.get('Email').value);
-    formData.append('User_Id', this.forgotPasswordForm.get('User_Id').value);
-    formData.append('Client_Id', this.forgotPasswordForm.get('Client_Id').value);
-
-    console.log(this.forgotPasswordForm.value);
-
-    this.sessionService.forgotPassword(formData)
-    .subscribe(
-      res => {
-        let auxRes: any = res;
-        this.bForgotPassword = false;
-        console.log(auxRes);
-        this.openSnackBar(auxRes.result);
-      },
-      err => {
-        let auxErr: any = err;
-        this.bForgotPassword = false;
-        console.log(auxErr);
-        this.openSnackBar('Something went wrong!SS');
-      }
-    );
+  handleSecondStep(){
+    this.bForgotPassword = true;
+    if(this.bSecondStep){
+      let formData = new FormData();
+      formData.append('Email', this.forgotPasswordSecondStepForm.get('Email').value);
+      formData.append('Client_Id', this.forgotPasswordSecondStepForm.get('Client_Id').value);
+      this.sessionService.forgotPassword(formData)
+      .subscribe(
+        res => {
+          let auxRes: any = res;
+          //console.log(auxRes);
+          this.bForgotPassword = false;
+          this.openSnackBar(auxRes.message);
+          this.forgotPasswordSecondStepForm.reset();
+          this.forgotPasswordFirstStepForm.reset();
+          this.bSecondStep = false;
+          this.bFirstStep = true;
+        },
+        err => {
+          let auxErr: any = err;
+          this.bForgotPassword = false;
+          console.log(auxErr);
+          this.openSnackBar(auxErr.message);
+        }
+      );
+    }
   }
 
 }
