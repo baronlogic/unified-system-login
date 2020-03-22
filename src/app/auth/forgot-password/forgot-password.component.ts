@@ -69,7 +69,7 @@ export class ForgotPasswordComponent implements OnInit {
       .subscribe(
         res => {
           let auxRes: any = res;
-          console.log(auxRes);
+          //console.log(auxRes);
           if(auxRes.state == 200){
             this.bForgotPassword = false;
             this.openSnackBar(auxRes.message);
@@ -106,7 +106,7 @@ export class ForgotPasswordComponent implements OnInit {
       .subscribe(
         res => {
           let auxRes: any = res;
-          console.log(auxRes);
+          //console.log(auxRes);
           this.bForgotPassword = false;
           this.openSnackBar(auxRes.message);
           this.forgotPasswordSecondStepForm.reset();
