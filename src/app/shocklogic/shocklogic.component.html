@@ -20,7 +20,9 @@
                <mat-icon>arrow_drop_down</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
-                <button class="fs-inherit" mat-menu-item (click)="signOut()">Log out</button>
+                <button class="fs-inherit" mat-menu-item (click)="goToMyAccount()"><mat-icon>account_circle</mat-icon><span>My account</span></button>
+                <button class="fs-inherit" mat-menu-item (click)="goToReports()"><mat-icon>assessment</mat-icon><span>Reports</span></button>
+                <button class="fs-inherit" mat-menu-item (click)="signOut()"><mat-icon>exit_to_app</mat-icon><span>Log out</span></button>
             </mat-menu>
         </mat-toolbar>
         <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
