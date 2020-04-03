@@ -31,7 +31,9 @@ export class SystemsComponent implements OnInit {
   }
 
   signOut(){
-    localStorage.clear();
+    //localStorage.clear();
+    localStorage.removeItem('userLogged');
+    localStorage.removeItem('token');
     this.router.navigate([''], { replaceUrl: true });
   }
 
@@ -57,8 +59,8 @@ export class SystemsComponent implements OnInit {
     this.systems = [
       { name: 'Abstractlogic', icon: 'https://dev.shocklogic.com/v2/img/unified-login/abstractlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
         license: this.user.systems.AbstractLogic, active: this.user.systems.AbstractlogicStatus },
-      /*{ name: 'Exhibitorlogic', icon: 'assets/exhibitorlogic.png',
-      license: this.user.systems.Exhibitorlogic, active: this.user.systems.ExhibitorlogicStatus },*/
+      { name: 'Exhibitorlogic', icon: 'https://trello-attachments.s3.amazonaws.com/52a5f9b71cfc79160f005fc5/592ff71e29751b4155369846/d80e09aac99f2a1e48f801b1117f67be/Icon_Exhibition.png', url: 'https://dev.shocklogic.com/v2/projectList',
+      license: this.user.systems.Exhibitorlogic, active: this.user.systems.ExhibitorlogicStatus },
       /*{ name: 'Leadlogic', icon: 'assets/leadlogic.png',
       license: this.user.systems.LeadlogicMobile, active: this.user.systems.LeadlogicMobileStatus },*/
       { name: 'Memberlogic', icon: 'https://dev.shocklogic.com/v2/img/unified-login/memberlogic.png', url: 'https://dev.shocklogic.com/v2/projectList',
