@@ -20,8 +20,18 @@ export class ShocklogicComponent implements OnInit {
   }
 
   signOut(){
-    localStorage.clear();
+    //localStorage.clear();
+    localStorage.removeItem('userLogged');
+    localStorage.removeItem('token');
     this.router.navigate([''], { replaceUrl: true });
+  }
+
+  goToMyAccount(){
+    window.location.href = 'https://dev.shocklogic.com/v2/accounts/myAccount';
+  }
+
+  goToReports(){
+    window.location.href = 'https://dev.shocklogic.com/reports/ExcelReportsSystemManagement.asp';
   }
 
 }
