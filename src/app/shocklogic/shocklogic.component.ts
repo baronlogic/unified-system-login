@@ -43,7 +43,8 @@ export class ShocklogicComponent implements OnInit {
   }
 
   goToReports(){
-    window.location.href = 'https://dev.shocklogic.com/reports/ExcelReportsSystemManagement.asp';
+    window.open('https://dev.shocklogic.com/reports/ExcelReportsSystemManagement.asp', '_blank');
+    //window.location.href = 'https://dev.shocklogic.com/reports/ExcelReportsSystemManagement.asp';
   }
 
 }
