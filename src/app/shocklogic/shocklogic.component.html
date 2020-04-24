@@ -10,19 +10,50 @@
                 <span class="fw-800">Dashboard</span>
            </div>
            <span class="spacer"></span>
-           <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxShow="true" fxHide.gt-xs>
+           <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu1" fxShow="true" fxHide.gt-xs>
                 <mat-icon>menu</mat-icon>
             </button>
-           <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu" fxHide="true" fxShow.gt-xs>
+           <button class="navbar-btn" mat-button [matMenuTriggerFor]="menu2" fxHide="true" fxShow.gt-xs>
                 <mat-icon>account_circle</mat-icon>
                 <span> Hello, </span> 
                <span class="fw-800">{{this.user.firstName}} {{this.user.familyName}} </span>
                <mat-icon>arrow_drop_down</mat-icon>
             </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-                <button class="fs-inherit" mat-menu-item (click)="goToMyAccount()"><mat-icon>account_circle</mat-icon><span>My account</span></button>
-                <button class="fs-inherit" mat-menu-item (click)="goToReports()"><mat-icon>assessment</mat-icon><span>Reports</span></button>
-                <button class="fs-inherit" mat-menu-item (click)="signOut()"><mat-icon>exit_to_app</mat-icon><span>Log out</span></button>
+            <mat-menu #menu1="matMenu" xPosition="before" fxShow="true" fxHide.gt-xs>
+                <button (click)="goToMyAccount()" class="fs-inherit" mat-menu-item><i class="fas fa-user-circle menu-icon-rspnsv"></i><span>My account</span></button>
+                <!--<button *ngIf="user.securityLevel >= 2" (click)="goToUsers()" class="fs-inherit" mat-menu-item><i class="fas fa-users menu-icon-rspnsv"></i><span>Users</span></button>
+                <button *ngIf="user.securityLevel == 3" (click)="goToClients()" class="fs-inherit" mat-menu-item><i class="fas fa-chalkboard-teacher menu-icon-rspnsv"></i><span>Clients</span></button>
+                <button *ngIf="user.securityLevel >= 2" (click)="goToAPI()" class="fs-inherit" mat-menu-item><i class="fas fa-globe menu-icon-rspnsv"></i><span>API</span></button>-->
+                <button *ngIf="user.securityLevel == 3" (click)="goToReports()" class="fs-inherit" mat-menu-item><i class="fas fa-chart-line menu-icon-rspnsv"></i><span>Reports</span></button>
+                <button (click)="signOut()" class="fs-inherit" mat-menu-item><i class="fas fa-sign-out-alt menu-icon-rspnsv"></i><span>Log out</span></button>
+            </mat-menu>
+            <mat-menu #menu2="matMenu" xPosition="before" fxHide="true" fxShow.gt-xs>
+                <mat-card class="menu-card">
+                    <button (click)="goToMyAccount()" class="menu-btn bg-success" mat-flat-button>
+                        <i class="fas fa-user-circle menu-btn-icon"></i>
+                        <h6 class="menu-btn-text">My account</h6>
+                    </button>
+                    <!--<button *ngIf="user.securityLevel >= 2" (click)="goToUsers()" class="menu-btn bg-warning" mat-flat-button>
+                        <i class="fas fa-users menu-btn-icon"></i>
+                        <h6 class="menu-btn-text">Users</h6>
+                    </button>
+                    <button *ngIf="user.securityLevel == 3" (click)="goToClients()" class="menu-btn bg-success" mat-flat-button>
+                        <i class="fas fa-chalkboard-teacher menu-btn-icon"></i>
+                        <h6 class="menu-btn-text">Clients</h6>
+                    </button>
+                    <button *ngIf="user.securityLevel >= 2" (click)="goToAPI()" class="menu-btn bg-warning" mat-flat-button>
+                        <i class="fas fa-globe menu-btn-icon"></i>
+                        <h6 class="menu-btn-text">API</h6>
+                    </button>-->
+                    <button *ngIf="user.securityLevel == 3" (click)="goToReports()" class="menu-btn bg-cyan" mat-flat-button>
+                        <i class="fas fa-chart-line menu-btn-icon"></i>
+                        <h6 class="menu-btn-text">Reports</h6>
+                    </button>
+                    <button (click)="signOut()" class="menu-btn bg-danger" mat-flat-button>
+                        <i class="fas fa-sign-out-alt menu-btn-icon"></i>
+                        <h6 class="menu-btn-text">Log out</h6>
+                    </button>
+                </mat-card>
             </mat-menu>
         </mat-toolbar>
         <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
